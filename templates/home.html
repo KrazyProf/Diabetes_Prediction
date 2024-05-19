@@ -49,99 +49,100 @@
 <body>
     <div class="container">
         <h2>Health Survey</h2>
-        <p>Do you have high blood pressure?</p>
+
         <form action="{{ url_for('predict_datapoint')}}" method="post">
         
             <div class="form-group">
-                <label for="HighBP">HighBP</label>
+                <label for="HighBP">Do you have High Blodd Pressure?</label>
                 <select id="HighBP" name="HighBP" required>
                     <option value=0>No</option>
                     <option value=1>Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="HighChol">HighChol</label>
+                <label for="HighChol">Do you have High cholesterol ?</label>
                 <select id="HighChol" name="HighChol" required>
                     <option value=0>No</option>
                     <option value=1>Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="CholCheck">CholCheck</label>
+                <label for="CholCheck">Did you check your cholesterol level in 5 years? </label>
                 <select id="CholCheck" name="CholCheck" required>
                     <option value=0>No</option>
                     <option value=1>Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="BMI">BMI</label>
+                <label for="BMI">Please put your Body Mass Index (BMI)</label>
                 <input type="number" id="BMI" name="BMI" required>
             </div>
             <div class="form-group">
-                <label for="Smoker">Smoker</label>
+                <label for="Smoker">Have you smoked at least 100 cigarettes in your entire life?</label>
                 <select id="Smoker" name="Smoker" required>
                     <option value=0>No</option>
                     <option value=1>Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="Stroke">Stroke</label>
+                <label for="Stroke">Have you had a Stroke in recent years?</label>
                 <select id="Stroke" name="Stroke" required>
                     <option value=0>No</option>
                     <option value=1>Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="HeartDiseaseorAttack">HeartDiseaseorAttack</label>
+                <label for="HeartDiseaseorAttack">Do you have coronary heart disease (CHD) or myocardial infarction (MI)?</label>
                 <select id="HeartDiseaseorAttack" name="HeartDiseaseorAttack" required>
                     <option value=0>No</option>
                     <option value=1>Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="PhysActivity">PhysActivity</label>
+                <label for="PhysActivity">Performed physical activity in past 30 days?</label>
                 <select id="PhysActivity" name="PhysActivity" required>
                     <option value=0>No</option>
                     <option value=1>Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="Fruits">Fruits</label>
+                <label for="Fruits">Do you consume Fruit 1 or more times per day?</label>
                 <select id="Fruits" name="Fruits" required>
                     <option value=0>No</option>
                     <option value=1>Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="Veggies">Veggies</label>
+                <label for="Veggies">Do you consume Vegetables 1 or more times per day?</label>
                 <select id="Veggies" name="Veggies" required>
                     <option value=0>No</option>
                     <option value=1>Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="HvyAlcoholConsump">HvyAlcoholConsump</label>
+                <label for="HvyAlcoholConsump">Are you a heavy alcohol consumer 
+                    (adult men >=14 drinks per week and adult women>=7 drinks per week)</label>
                 <select id="HvyAlcoholConsump" name="HvyAlcoholConsump" required>
                     <option value=0>No</option>
                     <option value=1>Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="AnyHealthcare">AnyHealthcare</label>
+                <label for="AnyHealthcare">Have any kind of health care coverage, including health insurance, prepaid plans such as HMO, etc</label>
                 <select id="AnyHealthcare" name="AnyHealthcare" required>
                     <option value=0>No</option>
                     <option value=1>Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="NoDocbcCost">NoDocbcCost</label>
+                <label for="NoDocbcCost">Was there a time in the past 12 months when you needed to see a doctor but could not because of cost?</label>
                 <select id="NoDocbcCost" name="NoDocbcCost" required>
                     <option value=0>No</option>
                     <option value=1>Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="GenHlth">GenHlth</label>
+                <label for="GenHlth">Would you say that in general your health is?</label>
                 <select id="GenHlth" name="GenHlth" required>
                     <option value=1>Excellent</option>
                     <option value=2>Very Good</option>
@@ -151,17 +152,17 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="MentHlth">MentHlth</label>
+                <label for="MentHlth">Days of poor mental health scale 1-30 days</label>
                 <input type="range" id="MentHlth" name="MentHlth" min="1" max="30" required>
             </div>
             
             <div class="form-group">
-                <label for="PhysHlth">PhysHlth</label>
+                <label for="PhysHlth">Days of poor physical health scale 1-30 days</label>
                 <input type="range" id="PhysHlth" name="PhysHlth" min="1" max="30" required>
             </div>
             
             <div class="form-group">
-                <label for="DiffWalk">DiffWalk</label>
+                <label for="DiffWalk">Do you have serious difficulty walking or climbing stairs?</label>
                 <select id="DiffWalk" name="DiffWalk" required>
                     <option value=0>No</option>
                     <option value=1>Yes</option>
