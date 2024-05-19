@@ -5,6 +5,7 @@ from dataclasses import dataclass
 
 import numpy as np 
 import pandas as pd
+from imblearn.combine import SMOTEENN
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
@@ -99,6 +100,10 @@ class DataTransformation:
             input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
 
+            # Apply SMOTEENN to the training data
+            smote_enn = SMOTEENN()
+            input_feature_train_arr, target_feature_train_df = smote_enn.fit_resample(input_feature_train_arr, target_feature_train_df)
+
             train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
             test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
 
@@ -123,4 +128,3 @@ def save_object(file_path, obj):
             pickle.dump(obj, file)
     except Exception as e:
         raise CustomException(e, sys)
-
