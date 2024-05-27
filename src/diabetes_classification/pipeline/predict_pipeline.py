@@ -28,7 +28,7 @@ class PredictPipeline:
 class CustomData:
     def __init__(self, HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, HeartDiseaseorAttack,
                     PhysActivity, Fruits, Veggies, HvyAlcoholConsump, AnyHealthcare, NoDocbcCost,
-                    GenHlth, MentHlth, PhysHlth, DiffWalk, Sex, Age):
+                    GenHlth, MentHlth, PhysHlth, DiffWalk, Sex, Age, Education , Income):
             self.HighBP = HighBP
             self.HighChol = HighChol
             self.CholCheck = CholCheck
@@ -48,6 +48,8 @@ class CustomData:
             self.DiffWalk = DiffWalk
             self.Sex = Sex
             self.Age = Age
+            self.Education = Education
+            self.Income = Income
 
     def get_data_as_data_frame(self):
         try:
@@ -70,7 +72,9 @@ class CustomData:
                 "PhysHlth": [self.PhysHlth],
                 "DiffWalk": [self.DiffWalk],
                 "Sex": [self.Sex],
-                "Age": [self.Age]
+                "Age": [self.Age],
+                "Education" : [self.Education],
+                "Income" : [self.Income]
             }
             return pd.DataFrame(data_dict)
 

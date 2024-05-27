@@ -27,7 +27,7 @@ class DataTransformation:
         This function is responsible for data transformation of numerical features only.
         '''
         try:
-            numerical_columns = ["BMI", "Age" , "MentHlth" , "PhysHlth"]
+            numerical_columns = ["BMI", "Age"]
             num_pipeline = Pipeline(
                 steps=[
                     ("imputer", SimpleImputer(strategy="median")),
@@ -76,14 +76,14 @@ class DataTransformation:
 
             preprocessing_obj = self.get_data_transformer_object()
 
-            drop_columns = ['Education', 'Income']
+            # drop_columns = ['Education', 'Income']
             target_column_name = "Diabetes_binary"
 
-            outlier_columns = ["BMI"]
+            outlier_columns = ["BMI","Education", "Income"]
            
             
-            train_df = train_df.drop(columns=drop_columns, axis=1)
-            test_df = test_df.drop(columns=drop_columns, axis=1)
+            # train_df = train_df.drop(columns=drop_columns, axis=1)
+            # test_df = test_df.drop(columns=drop_columns, axis=1)
 
             # Removing outliers
             train_df = self.remove_outliers(train_df,outlier_columns)

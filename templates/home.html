@@ -4,73 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health Survey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-color: #f0f2f5;
         }
         .container {
             max-width: 600px;
-            margin: auto;
+            margin: 50px auto;
             padding: 20px;
             background-color: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
         }
         .form-group select, .form-group input {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
+            padding: 10px;
+            border: 1px solid #ddd;
             border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        .form-group input[type="range"] {
+            padding: 0;
+        }
+        .form-group .value-display {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #555;
         }
         .form-group button {
-            padding: 10px 15px;
-            background-color: #28a745;
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         .form-group button:hover {
-            background-color: #218838;
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Health Survey</h2>
-
-        <form action="{{ url_for('predict_datapoint')}}" method="post">
-        
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
             <div class="form-group">
-                <label for="HighBP">Do you have High Blodd Pressure?</label>
+                <label for="HighBP">Do you have High Blood Pressure?</label>
                 <select id="HighBP" name="HighBP" required>
-                    <option value=0>No</option>
-                    <option value=1>Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="HighChol">Do you have High cholesterol ?</label>
+                <label for="HighChol">Do you have High cholesterol?</label>
                 <select id="HighChol" name="HighChol" required>
-                    <option value=0>No</option>
-                    <option value=1>Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="CholCheck">Did you check your cholesterol level in 5 years? </label>
+                <label for="CholCheck">Did you check your cholesterol level in 5 years?</label>
                 <select id="CholCheck" name="CholCheck" required>
-                    <option value=0>No</option>
-                    <option value=1>Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
             <div class="form-group">
@@ -80,112 +100,134 @@
             <div class="form-group">
                 <label for="Smoker">Have you smoked at least 100 cigarettes in your entire life?</label>
                 <select id="Smoker" name="Smoker" required>
-                    <option value=0>No</option>
-                    <option value=1>Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="Stroke">Have you had a Stroke in recent years?</label>
                 <select id="Stroke" name="Stroke" required>
-                    <option value=0>No</option>
-                    <option value=1>Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="HeartDiseaseorAttack">Do you have coronary heart disease (CHD) or myocardial infarction (MI)?</label>
                 <select id="HeartDiseaseorAttack" name="HeartDiseaseorAttack" required>
-                    <option value=0>No</option>
-                    <option value=1>Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="PhysActivity">Performed physical activity in past 30 days?</label>
                 <select id="PhysActivity" name="PhysActivity" required>
-                    <option value=0>No</option>
-                    <option value=1>Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="Fruits">Do you consume Fruit 1 or more times per day?</label>
                 <select id="Fruits" name="Fruits" required>
-                    <option value=0>No</option>
-                    <option value=1>Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="Veggies">Do you consume Vegetables 1 or more times per day?</label>
                 <select id="Veggies" name="Veggies" required>
-                    <option value=0>No</option>
-                    <option value=1>Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="HvyAlcoholConsump">Are you a heavy alcohol consumer 
                     (adult men >=14 drinks per week and adult women>=7 drinks per week)</label>
                 <select id="HvyAlcoholConsump" name="HvyAlcoholConsump" required>
-                    <option value=0>No</option>
-                    <option value=1>Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="AnyHealthcare">Have any kind of health care coverage, including health insurance, prepaid plans such as HMO, etc</label>
+                <label for="AnyHealthcare">Have any kind of health care coverage, including health insurance, prepaid plans such as HMO, etc?</label>
                 <select id="AnyHealthcare" name="AnyHealthcare" required>
-                    <option value=0>No</option>
-                    <option value=1>Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="NoDocbcCost">Was there a time in the past 12 months when you needed to see a doctor but could not because of cost?</label>
                 <select id="NoDocbcCost" name="NoDocbcCost" required>
-                    <option value=0>No</option>
-                    <option value=1>Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="GenHlth">Would you say that in general your health is?</label>
                 <select id="GenHlth" name="GenHlth" required>
-                    <option value=1>Excellent</option>
-                    <option value=2>Very Good</option>
-                    <option value=3>Good</option>
-                    <option value=4>Fair</option>
-                    <option value=5>Poor</option>
+                    <option value="1">Excellent</option>
+                    <option value="2">Very Good</option>
+                    <option value="3">Good</option>
+                    <option value="4">Fair</option>
+                    <option value="5">Poor</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="MentHlth">Days of poor mental health scale 1-30 days</label>
-                <input type="range" id="MentHlth" name="MentHlth" min="1" max="30" required>
+                <label for="MentHlth">Days of poor mental health (1-30 days)</label>
+                <input type="range" id="MentHlth" name="MentHlth" min="1" max="30" oninput="updateMentHlthValue(this.value)" required>
+                <div class="value-display">Selected Value: <span id="MentHlthValue">1</span></div>
             </div>
-            
             <div class="form-group">
-                <label for="PhysHlth">Days of poor physical health scale 1-30 days</label>
-                <input type="range" id="PhysHlth" name="PhysHlth" min="1" max="30" required>
+                <label for="PhysHlth">Days of poor physical health (1-30 days)</label>
+                <input type="range" id="PhysHlth" name="PhysHlth" min="1" max="30" oninput="updatePhysHlthValue(this.value)" required>
+                <div class="value-display">Selected Value: <span id="PhysHlthValue">1</span></div>
             </div>
-            
             <div class="form-group">
                 <label for="DiffWalk">Do you have serious difficulty walking or climbing stairs?</label>
                 <select id="DiffWalk" name="DiffWalk" required>
-                    <option value=0>No</option>
-                    <option value=1>Yes</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="Sex">Sex</label>
                 <select id="Sex" name="Sex" required>
-                    <option value=0>Female</option>
-                    <option value=1>Male</option>
+                    <option value="0">Female</option>
+                    <option value="1">Male</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="Age">Age</label>
                 <input type="number" id="Age" name="Age" required>
             </div>
+            <div class="form-group">
+                <label for="Education">What is your Education level (1-6)?</label>
+                <input type="range" id="Education" name="Education" min="1" max="6" oninput="updateEducationValue(this.value)" required>
+                <div class="value-display">Selected Value: <span id="EducationValue">1</span></div>
+            </div>
+            <div class="form-group">
+                <label for="IncomeSlider">What is your Annual Income (1-8)?</label>
+                <input type="range" id="IncomeSlider" name="Income" min="1" max="8" value="1" oninput="updateIncomeValue(this.value)">
+                <div class="value-display">Selected Value: <span id="IncomeValue">1</span></div>
+            </div>
             <div class="mb-3">
-                <input class="btn btn-primary" type="submit" value="Prediction is " required />
+                <button type="submit">Prediction is</button>
             </div>
         </form>
     </div>
-    <h2>
-        THE  prediction is {{results}}
-     </h2>
+    <h2>You have {{results}} chance of getting Diabetes.</h2>
+    <script>
+        function updateMentHlthValue(val) {
+            document.getElementById('MentHlthValue').innerText = val;
+        }
+        function updatePhysHlthValue(val) {
+            document.getElementById('PhysHlthValue').innerText = val;
+        }
+        function updateEducationValue(val) {
+            document.getElementById('EducationValue').innerText = val;
+        }
+        function updateIncomeValue(val) {
+            document.getElementById('IncomeValue').innerText = val;
+        }
+    </script>
 </body>
 </html>

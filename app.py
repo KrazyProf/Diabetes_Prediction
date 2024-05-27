@@ -37,7 +37,9 @@ def predict_datapoint():
             PhysHlth=int(request.form.get('PhysHlth')),
             DiffWalk=int(request.form.get('DiffWalk')),
             Sex=int(request.form.get('Sex')),
-            Age=int(request.form.get('Age'))
+            Age=int(request.form.get('Age')),
+            Education=int(request.form.get('Education')),
+            Income=int(request.form.get('Income'))
         )
 
         pred_df = data.get_data_as_data_frame()
@@ -48,7 +50,12 @@ def predict_datapoint():
         print("Mid Prediction")
         results = predict_pipeline.predict(pred_df)
         print("after Prediction")
-        return render_template('home.html', results=results[0])
+        if results[0] == 0 :
+            results = 'Low'
+        else:
+            results = 'High'
+        
+        return render_template('home.html', results=results)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
